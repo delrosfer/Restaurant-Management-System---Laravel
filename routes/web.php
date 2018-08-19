@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/login', 'LoginController@index')->name('login');
+
+Route::get('/employee', 'EmployeeController@home')->name('home');
+
+Route::get('/employee/orders', 'EmployeeController@showOrders')->name('orders');

@@ -1,0 +1,31 @@
+.container-fluid {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* html, body {
+    margin: 0;
+    padding: 0;
+} */
+
+.navbar {
+    /* background-color: rgb(26, 7, 38) !important; */
+    background-color: rgb(5, 13, 38) !important;
+    min-height: 9vh;
+}
+
+.background{
+    /* background-image: url('../images/background.jpg'); */
+    background-color: rgb(233, 233, 233);
+    /* width: 100%; */
+    min-height: 91vh;
+    border: 5px solid black;
+    /* background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    /* background-attachment: fixed; */
+    /* text-align: center; */
+    color: #050D26;
+    /* text-shadow: 2px 2px 5px #000; */
+}
