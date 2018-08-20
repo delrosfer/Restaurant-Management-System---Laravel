@@ -15,4 +15,12 @@ Route::get('/login', 'LoginController@index')->name('login');
 
 Route::get('/employee', 'EmployeeController@home')->name('home');
 
-Route::get('/employee/orders', 'EmployeeController@showOrders')->name('orders');
+Route::get('/employee/orders', 'EmployeeController@showOrders')->name('showOrders');
+
+Route::get('/employee/orders/id/edit', 'EmployeeController@editOrder')->name('editOrder');
+
+Route::get('/employee/orders/id/delete', 'EmployeeController@deleteOrder')->name('deleteOrder');
+
+Route::get('/employee/orders/new', 'EmployeeController@newOrder')->name('newOrder');
+
+Route::get('/employee/tables', 'EmployeeController@showTables')->name('showTables');

@@ -71,3 +71,31 @@ tr:nth-child(even) > td > .btn {
     background-color: #D0D0D0;
     color: rgb(28, 35, 61);
 }
+
+
+
+/* employee add order */
+.order-form {
+    /* margin: 0 auto; */
+    margin-top: 3rem;
+    /* background-color: rgb(28, 35, 61); */
+    /* color: #FFF; */
+    /* padding: 1rem; */
+    /* box-shadow: 0 0 3px #000; */
+}
+
+.cart-button {
+    margin-top: 4rem;
+    float: right;
+}
+
+
+/* employee tables */
+.badge {
+    width: 5rem;
+    height: 1.5rem;
+}
+
+.list-tables {
+    margin-top: 1.3rem;
+}
