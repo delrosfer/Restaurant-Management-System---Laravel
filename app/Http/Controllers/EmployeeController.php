@@ -11,22 +11,22 @@ class EmployeeController extends Controller
     }
 
     public function showOrders() {
-        return view('employee.orders.showOrders');
+        return view('employee.orders.show');
     }
 
     public function editOrder() {
-        return view('employee.orders.editOrders');
+        return view('employee.orders.edit');
     }
 
     public function deleteOrder() {
-        return view('employee.orders.deleteOrders');
+        return view('employee.orders.delete');
     }
 
     public function newOrder() {
-        return view('employee.orders.newOrder');
+        return view('employee.orders.new');
     }
 
     public function showTables() {
-        return view('employee.tables.showTables');
+        return view('employee.tables.show');
     }
 }

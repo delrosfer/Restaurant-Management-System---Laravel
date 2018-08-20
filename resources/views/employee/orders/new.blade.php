@@ -33,8 +33,7 @@
                         <div class="card-body">
                           <h5 class="card-title">Pizza</h5>
                           <p class="card-text">Mashroom and pepparoni topings with added mozzarella</p>
-                          <button class="btn"><i class="fas fa-plus"></i></button>
-                          <button class="btn" style="float: right;"><i class="fas fa-minus"></i></button>
+                          <button class="btn" style="float: right;"><i class="fas fa-plus"></i> Add to Order</button>
                         </div>
                       </div>
                   </div>

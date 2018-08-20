@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{{asset('css/employee.css')}}">
+    <link rel="stylesheet" href="{{asset('css/admin.css')}}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -25,24 +25,46 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{{route('employee.showOrders')}}">View Orders</a>
-                  <a class="dropdown-item" href="{{route('employee.newOrder')}}">Add Order</a>
+                  <a class="dropdown-item" href="#">View Orders</a>
+                  <a class="dropdown-item" href="#">Add Order</a>
                   <a class="dropdown-item" href="#">Edit Order</a>
                   <a class="dropdown-item" href="#">Delete Order</a>
                 </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Categories</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Employees</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">View Employees</a>
+                  <a class="dropdown-item" href="#">Add Employee</a>
+                  <a class="dropdown-item" href="#">Edit Employee</a>
+                  <a class="dropdown-item" href="#">Delete Employee</a>
+                </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Items</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">View Categories</a>
+                  <a class="dropdown-item" href="#">Add Category</a>
+                  <a class="dropdown-item" href="#">Edit Category</a>
+                  <a class="dropdown-item" href="#">Delete Category</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Items</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">View Items</a>
+                  <a class="dropdown-item" href="#">Add Item</a>
+                  <a class="dropdown-item" href="#">Edit Item</a>
+                  <a class="dropdown-item" href="#">Delete Item</a>
+                </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tables</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">View Available Tables</a>
-                  <a class="dropdown-item" href="#">View Occupied Tables</a>
-                  <a class="dropdown-item" href="#">View All Tables</a>
+                  <a class="dropdown-item" href="#">View Tables</a>
+                  <a class="dropdown-item" href="#">Add Table</a>
+                  <a class="dropdown-item" href="#">Edit Table</a>
+                  <a class="dropdown-item" href="#">Delete Table</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

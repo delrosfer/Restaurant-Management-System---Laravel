@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('admin.layouts.adminLayout')
 
 @section('title', 'Admin Home')
 
@@ -8,11 +8,7 @@
 
 @section('main_content')
     <!-- Navbar -->
-    <div class="container-fluid">
-        <div class="background">
-            <div class="">
-
-            </div>
-        </div>
+    <div class="container">
+        
     </div>
 @endsection
