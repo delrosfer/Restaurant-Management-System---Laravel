@@ -108,3 +108,9 @@ tr:nth-child(even) > td > .btn {
     padding: 2rem;
     color: rgb(28, 35, 61);
 }
+
+/* admin edit item */
+
+.item-pic {
+    border-left: 2px solid #FFF;
+}

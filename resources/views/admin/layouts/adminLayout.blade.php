@@ -43,19 +43,15 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Categories</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">View Categories</a>
-                  <a class="dropdown-item" href="#">Add Category</a>
-                  <a class="dropdown-item" href="#">Edit Category</a>
-                  <a class="dropdown-item" href="#">Delete Category</a>
+                  <a class="dropdown-item" href="{{route('admin.showCategories')}}">View Categories</a>
+                  <a class="dropdown-item" href="{{route('admin.newCategory')}}">Add Category</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Items</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">View Items</a>
-                  <a class="dropdown-item" href="#">Add Item</a>
-                  <a class="dropdown-item" href="#">Edit Item</a>
-                  <a class="dropdown-item" href="#">Delete Item</a>
+                  <a class="dropdown-item" href="{{route('admin.showItems')}}">View Items</a>
+                  <a class="dropdown-item" href="{{route('admin.newItem')}}">Add Item</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -63,8 +59,6 @@
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">View Tables</a>
                   <a class="dropdown-item" href="#">Add Table</a>
-                  <a class="dropdown-item" href="#">Edit Table</a>
-                  <a class="dropdown-item" href="#">Delete Table</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

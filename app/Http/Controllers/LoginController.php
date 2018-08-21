@@ -25,7 +25,8 @@ class LoginController extends Controller
                 return redirect()->route('employee.home');
             }
             else {
-                dd($employee);
+                $request->session()->put('admin', $employee);
+                return redirect()->route('admin.home');
             }
         }
         else {

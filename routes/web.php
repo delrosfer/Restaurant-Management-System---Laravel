@@ -36,6 +36,20 @@ Route::get('/admin/items', 'AdminController@showItems')->name('admin.showItems')
 Route::get('/admin/items/new', 'AdminController@newItem')->name('admin.newItem');
 Route::post('/admin/items/new', 'AdminController@storeItem')->name('admin.storeItem');
 
-Route::get('/admin/items/id/edit', 'AdminController@editItem')->name('admin.editItem');
+Route::get('/admin/items/{id}/edit', 'AdminController@editItem')->name('admin.editItem');
+Route::post('/admin/items/{id}/edit', 'AdminController@updateItem');
 
-Route::get('/admin/items/id/delete', 'AdminController@deleteItem')->name('admin.deleteItem');
+Route::get('/admin/items/{id}/remove', 'AdminController@removeItem')->name('admin.removeItem');
+Route::post('/admin/items/{id}/remove', 'AdminController@deleteItem');
+
+Route::get('/admin/categories', 'AdminController@showCategories')->name('admin.showCategories');
+
+Route::get('/admin/categories/new', 'AdminController@newCategory')->name('admin.newCategory');
+Route::post('/admin/categories/new', 'AdminController@createCategory');
+
+Route::get('/admin/categories/{id}/edit', 'AdminController@editCategory')->name('admin.editCategory');
+
+Route::post('/admin/categories/{id}/edit', 'AdminController@updateCategory');
+
+Route::get('/admin/categories/{id}/remove', 'AdminController@removeCategory')->name('admin.removeCategory');
+Route::post('/admin/categories/{id}/remove', 'AdminController@deleteCategory');
