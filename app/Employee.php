@@ -16,5 +16,5 @@ class Employee extends Model
         'address'
     ];
 
-    protected $primaryKey = 'employee_id';
+    // protected $primaryKey = 'employee_id';
 }

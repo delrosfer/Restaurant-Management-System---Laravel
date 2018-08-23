@@ -53,3 +53,30 @@ Route::post('/admin/categories/{id}/edit', 'AdminController@updateCategory');
 
 Route::get('/admin/categories/{id}/remove', 'AdminController@removeCategory')->name('admin.removeCategory');
 Route::post('/admin/categories/{id}/remove', 'AdminController@deleteCategory');
+
+Route::get('/admin/employees', 'AdminController@showEmployees')->name('admin.showEmployees');
+Route::post('/admin/employees', 'AdminController@searchEmployees');
+
+Route::get('/admin/employees/new', 'AdminController@newEmployee')->name('admin.newEmployee');
+Route::post('/admin/employees/new', 'AdminController@createEmployee');
+
+Route::get('/admin/employees/{id}/edit', 'AdminController@editEmployee')->name('admin.editEmployee');
+Route::post('/admin/employees/{id}/edit', 'AdminController@updateEmployee');
+
+Route::get('/admin/employees/{id}/remove', 'AdminController@removeEmployee')->name('admin.removeEmployee');
+Route::post('/admin/employees/{id}/remove', 'AdminController@deleteEmployee');
+
+Route::get('/admin/tables', 'AdminController@showTables')->name('admin.showTables');
+Route::post('/admin/tables', 'AdminController@toggleTables');
+
+Route::get('/admin/tables/available', 'AdminController@showAvailableTables')->name('admin.showAvailableTables');
+Route::post('/admin/tables/available', 'AdminController@toggleAvailableTables');
+
+Route::get('/admin/tables/occupied', 'AdminController@showOccupiedTables')->name('admin.showOccupiedTables');
+Route::post('/admin/tables/occupied', 'AdminController@toggleOccupiedTables');
+
+Route::get('/admin/tables/new', 'AdminController@newTable')->name('admin.newTable');
+Route::post('/admin/tables/new', 'AdminController@addTable');
+
+Route::get('/admin/tables/{id}/remove', 'AdminController@removeTable')->name('admin.removeTable');
+Route::post('/admin/tables/{id}/remove', 'AdminController@deleteTable');

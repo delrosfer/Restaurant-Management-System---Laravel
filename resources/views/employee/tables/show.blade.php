@@ -6,21 +6,10 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <p class="display-4">
                     Listing All Tables..
                 </p>
-            </div>
-            <div class="col-md-4 list-tables">
-                <form class="form-inline">
-                    <select class="input-group-text dropbar" id="inputGroupSelect01" name="searchBy">
-                            <option selected>Search By...</option>
-                            <option value="all">All Tables</option>
-                            <option value="available">Available Tables</option>
-                            <option value="occupied">Occupied Tables</option>
-                    </select>
-                    <button class="btn my-2 my-sm-0" type="submit">Search</button>
-                </form>
             </div>
         </div>
         <hr>

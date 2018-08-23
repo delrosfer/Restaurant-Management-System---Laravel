@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ItemRequest;
 use App\Http\Requests\EditItemRequest;
 use App\Http\Requests\EditCategoryRequest;
+use App\Http\Requests\EditEmployeeRequest;
 use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\EmployeeRequest;
+use App\Http\Requests\TableRequest;
 use App\Item;
 use App\Category;
+use App\Employee;
+use App\Table;
 
 class AdminController extends Controller
 {
@@ -17,6 +22,7 @@ class AdminController extends Controller
         return view('admin.home');
     }
 
+    //items
     public function newItem(Request $request) {
         $result = Category::all();
 
@@ -120,6 +126,8 @@ class AdminController extends Controller
         return redirect()->route('admin.showItems');
     }
 
+
+    //categories
     public function showCategories() {
         $categories = Category::all();
 
@@ -167,5 +175,227 @@ class AdminController extends Controller
         $category->delete();
 
         return redirect()->route('admin.showCategories');
+    }
+
+
+    //employees
+    public function showEmployees() {
+        $employess = Employee::all();
+
+        return view('admin.employees.show')
+            ->with('employees', $employess);
+    }
+
+    public function searchEmployees(Request $request) {
+        $searchBy = $request->searchBy;
+        $word = $request->word;
+
+        $employees = Employee::where($searchBy, 'like', '%'.$word.'%')->get();
+
+        // dd($employees);
+        return view('admin.employees.show')
+            ->with('employees', $employees);
+    }
+
+    public function newEmployee() {
+        return view('admin.employees.new');
+    }
+
+    public function createEmployee(EmployeeRequest $request) {
+
+        //hanle file upload
+        if($request->hasFile('employeeImage')){
+            //get file name with extension
+            $fileNameWithExt = $request->file('employeeImage')->getClientOriginalName();
+
+            //get just file namespace
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //get just extension
+            $extension = $request->file('employeeImage')->getClientOriginalExtension();
+            //file name to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            //upload image
+            $path = $request->file('employeeImage')->storeAs('public/employeeImages', $fileNameToStore);
+        }
+        else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+
+        $employee = new Employee();
+        $employee->name = $request->name;
+        $employee->email = $request->email;
+        $employee->phone = $request->phone;
+        $employee->password = $request->password;
+        $employee->address = $request->address;
+        $employee->gender = $request->gender;
+        $employee->is_admin = 0;
+        $employee->employee_image = $fileNameToStore;
+
+        $employee->save();
+        return redirect()->route('admin.showEmployees');
+    }
+
+    public function editEmployee(Request $request) {
+        $employee = Employee::findOrFail($request->id);
+
+        return view('admin.employees.edit')
+            ->with('employee', $employee);
+    }
+
+    public function updateEmployee(EditEmployeeRequest $request) {
+
+        if($request->hasFile('employeeImage')){
+            //get file name with extension
+            $fileNameWithExt = $request->file('employeeImage')->getClientOriginalName();
+
+            //get just file namespace
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //get just extension
+            $extension = $request->file('employeeImage')->getClientOriginalExtension();
+            //file name to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            //upload image
+            $path = $request->file('employeeImage')->storeAs('public/employeeImages', $fileNameToStore);
+        }
+
+        $employee = Employee::findOrFail($request->employee_id);
+
+        $employee->name = $request->name;
+        $employee->email = $request->email;
+        $employee->phone = $request->phone;
+        $employee->password = $request->password;
+        $employee->address = $request->address;
+        $employee->gender = $request->gender;
+        $employee->is_admin = 0;
+
+        if($request->hasFile('employeeImage')){
+            if($employee->employee_image == 'noimage.jpg'){
+                Storage::delete('public/employeeImages/'. $employee->employee_image);
+            }
+            $employee->employee_image = $fileNameToStore;
+        }
+
+        $employee->save();
+        return redirect()->route('admin.showEmployees');
+
+    }
+
+    public function removeEmployee(Request $request) {
+        $employee = Employee::findOrFail($request->id);
+
+        return view('admin.employees.remove')
+            ->with('employee', $employee);
+    }
+
+    public function deleteEmployee(Request $request) {
+        $employee = Employee::findOrFail($request->employee_id);
+
+        if($employee->employee_image != 'noimage.jpg'){
+            Storage::delete('public/employeeImages/'. $employee->employee_image);
+        }
+        $employee->delete();
+
+        return redirect()->route('admin.showEmployees');
+
+    }
+
+
+    //tables
+    public function showTables() {
+        $tables = Table::all();
+
+        return view('admin.tables.show')
+            ->with('tables', $tables);
+    }
+
+    public function toggleTables(Request $request) {
+        $table = Table::findOrFail($request->table_id);
+
+        if($table->status == 'Available'){
+            $table->status = 'Occupied';
+        }
+        else {
+            $table->status = 'Available';
+        }
+
+        $table->save();
+
+        return redirect()->route('admin.showTables');
+    }
+
+
+    //available tables
+    public function showAvailableTables() {
+        $tables = Table::where('status', 'Available')->get();
+
+        return view('admin.tables.available')
+            ->with('tables', $tables);
+    }
+
+    public function toggleAvailableTables(Request $request) {
+        $table = Table::findOrFail($request->table_id);
+
+        if($table->status == 'Available'){
+            $table->status = 'Occupied';
+        }
+        else {
+            $table->status = 'Available';
+        }
+
+        $table->save();
+
+        return redirect()->route('admin.showAvailableTables');
+    }
+
+    //occupied tables
+    public function showOccupiedTables() {
+        $tables = Table::where('status', 'Occupied')->get();
+
+        return view('admin.tables.occupied')
+            ->with('tables', $tables);
+    }
+
+    public function toggleOccupiedTables(Request $request) {
+        $table = Table::findOrFail($request->table_id);
+
+        if($table->status == 'Available'){
+            $table->status = 'Occupied';
+        }
+        else {
+            $table->status = 'Available';
+        }
+
+        $table->save();
+
+        return redirect()->route('admin.showOccupiedTables');
+    }
+
+    public function newTable() {
+        return view('admin.tables.new');
+    }
+
+    public function addTable(TableRequest $request) {
+        $table = new Table();
+        $table->status = $request->status;
+        $table->capacity = $request->capacity;
+
+        $table->save();
+
+        return redirect()->route('admin.showTables');
+    }
+
+    public function removeTable(Request $request) {
+        $table = Table::findOrFail($request->id);
+
+        return view('admin.tables.remove')
+            ->with('table', $table);
+    }
+
+    public function deleteTable(Request $request) {
+        $table = Table::findOrFail($request->table_id);
+        $table->delete();
+
+        return redirect()->route('admin.showTables');
     }
 }

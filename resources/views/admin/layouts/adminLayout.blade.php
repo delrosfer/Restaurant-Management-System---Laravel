@@ -34,10 +34,8 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Employees</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">View Employees</a>
-                  <a class="dropdown-item" href="#">Add Employee</a>
-                  <a class="dropdown-item" href="#">Edit Employee</a>
-                  <a class="dropdown-item" href="#">Delete Employee</a>
+                  <a class="dropdown-item" href="{{route('admin.showEmployees')}}">View Employees</a>
+                  <a class="dropdown-item" href="{{route('admin.newEmployee')}}">Add Employee</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -57,8 +55,11 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tables</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">View Tables</a>
-                  <a class="dropdown-item" href="#">Add Table</a>
+                  <a class="dropdown-item" href="{{route('admin.showTables')}}">View Tables</a>
+                  <a class="dropdown-item" href="{{route('admin.showAvailableTables')}}">Show Available Tables</a>
+                  <a class="dropdown-item" href="{{route('admin.showOccupiedTables')}}">Show Occupied Tables</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{{route('admin.newTable')}}">Add Table</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -82,6 +83,5 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="{{asset('js/app.js')}}"></script>
-  </body>
   </body>
 </html>
