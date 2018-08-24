@@ -80,3 +80,13 @@ Route::post('/admin/tables/new', 'AdminController@addTable');
 
 Route::get('/admin/tables/{id}/remove', 'AdminController@removeTable')->name('admin.removeTable');
 Route::post('/admin/tables/{id}/remove', 'AdminController@deleteTable');
+
+Route::get('/admin/profile', 'AdminController@showProfile')->name('admin.showProfile');
+
+Route::get('/admin/profile/edit', 'AdminController@editProfile')->name('admin.editProfile');
+Route::post('/admin/profile/edit', 'AdminController@updateProfile');
+
+Route::get('/admin/profile/password', 'AdminController@editPassword')->name('admin.editPassword');
+Route::post('/admin/profile/password', 'AdminController@updatePassword');
+
+Route::get('/logout', 'LogoutController@logout')->name('logout');

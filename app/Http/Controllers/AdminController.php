@@ -8,8 +8,10 @@ use App\Http\Requests\ItemRequest;
 use App\Http\Requests\EditItemRequest;
 use App\Http\Requests\EditCategoryRequest;
 use App\Http\Requests\EditEmployeeRequest;
+use App\Http\Requests\EditProfileRequest;
 use App\Http\Requests\CategoryRequest;
 use App\Http\Requests\EmployeeRequest;
+use App\Http\Requests\PasswordRequest;
 use App\Http\Requests\TableRequest;
 use App\Item;
 use App\Category;
@@ -397,5 +399,83 @@ class AdminController extends Controller
         $table->delete();
 
         return redirect()->route('admin.showTables');
+    }
+
+    public function showProfile(Request $request) {
+        $admin = $request->session()->get('admin');
+
+        return view('admin.profile.show')
+            ->with('employee', $admin);
+    }
+
+    public function editProfile(Request $request) {
+        $admin = $request->session()->get('admin');
+
+        return view('admin.profile.edit')
+            ->with('employee', $admin);
+    }
+
+    public function updateProfile(EditProfileRequest $request) {
+        $admin = $request->session()->get('admin');
+
+        if($request->hasFile('employeeImage')){
+            //get file name with extension
+            $fileNameWithExt = $request->file('employeeImage')->getClientOriginalName();
+
+            //get just file namespace
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //get just extension
+            $extension = $request->file('employeeImage')->getClientOriginalExtension();
+            //file name to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            //upload image
+            $path = $request->file('employeeImage')->storeAs('public/employeeImages', $fileNameToStore);
+        }
+
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+        $admin->phone = $request->phone;
+        $admin->address = $request->address;
+        $admin->gender = $request->gender;
+
+        if($request->hasFile('employeeImage')){
+            if($admin->employee_image == 'noimage.jpg'){
+                Storage::delete('public/employeeImages/'. $admin->employee_image);
+            }
+            $admin->employee_image = $fileNameToStore;
+        }
+
+        $admin->save();
+        return redirect()->route('admin.showProfile');
+    }
+
+    public function editPassword(Request $request) {
+        return view('admin.profile.password');
+    }
+
+    public function updatePassword(PasswordRequest $request) {
+        $admin = $request->session()->get('admin');
+
+        $oldPass = $request->oldPass;
+        $newPass = $request->newPass;
+        $confirmPass = $request->confirmPass;
+
+        if($oldPass == $admin->password){
+            if($newPass == $confirmPass){
+                $admin->password = $confirmPass;
+                $admin->save();
+
+                $request->session()->flash('message', 'Password successfully updated');
+                return redirect()->route('admin.editPassword');
+            }
+            else {
+                $request->session()->flash('message', 'Your passwords do not match!');
+                return redirect()->route('admin.editPassword');
+            }
+        }
+        else {
+            $request->session()->flash('message', 'Incorrect Password, try again!');
+            return redirect()->route('admin.editPassword');
+        }
     }
 }
