@@ -13,7 +13,7 @@
         <hr>
         <!-- <form method="post" enctype="multipart/form-data"> -->
             <div class="row">
-                <div class="col-md-8 new-item">
+                <div class="col-md-8">
                         {{csrf_field()}}
                         <input type="hidden" name="employee_id" value="{{$employee->id}}">
                         <div class="form-group">

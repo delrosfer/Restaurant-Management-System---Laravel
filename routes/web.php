@@ -89,4 +89,9 @@ Route::post('/admin/profile/edit', 'AdminController@updateProfile');
 Route::get('/admin/profile/password', 'AdminController@editPassword')->name('admin.editPassword');
 Route::post('/admin/profile/password', 'AdminController@updatePassword');
 
+Route::get('/admin/orders/new', 'AdminController@newOrder')->name('admin.newOrder');
+Route::post('/admin/orders/new', 'AdminController@addOrder');
+
+Route::get('/cart', 'AdminController@retrieve')->name('admin.cart');
+
 Route::get('/logout', 'LogoutController@logout')->name('logout');

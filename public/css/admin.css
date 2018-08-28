@@ -114,3 +114,13 @@ tr:nth-child(even) > td > .btn {
 .item-pic {
     border-left: 2px solid #FFF;
 }
+
+/* show items */
+.card {
+    width: 15rem;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    max-height: 15rem;
+}

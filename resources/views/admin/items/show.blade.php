@@ -30,7 +30,7 @@
               @foreach($categories as $category)
                 @foreach($category->items as $item)
                 <div class="col-md-3">
-                    <div class="card" style="width: 15rem; margin-bottom: 2rem;">
+                    <div class="card">
                       <img class="card-img-top" src="/storage/itemImages/{{$item->item_image}}" alt="Card image cap">
                       <div class="card-body">
                         <h5 class="card-title">Category: {{$category->name}}</h5>

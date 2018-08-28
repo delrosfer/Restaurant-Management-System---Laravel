@@ -36,7 +36,7 @@ class ItemRequest extends FormRequest
      public function messages()
      {
          return [
-             'name.required' => 'Email is required',
+             'name.required' => 'Name is required',
              'name.unique' => 'Name already exists',
              'price.required' => 'Price is required',
              'price.numeric' => 'Price needs to be numeric',

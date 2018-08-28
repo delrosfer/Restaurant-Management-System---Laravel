@@ -26,9 +26,7 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
                 <div class="dropdown-menu">
                   <a class="dropdown-item" href="#">View Orders</a>
-                  <a class="dropdown-item" href="#">Add Order</a>
-                  <a class="dropdown-item" href="#">Edit Order</a>
-                  <a class="dropdown-item" href="#">Delete Order</a>
+                  <a class="dropdown-item" href="{{route('admin.newOrder')}}">Add Order</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

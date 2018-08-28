@@ -17,6 +17,7 @@ use App\Item;
 use App\Category;
 use App\Employee;
 use App\Table;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class AdminController extends Controller
 {
@@ -478,4 +479,32 @@ class AdminController extends Controller
             return redirect()->route('admin.editPassword');
         }
     }
+
+    public function newOrder() {
+        $categories = Category::all();
+        $tables = Table::where('status', 'Available')->get();
+        return view('admin.orders.new')
+            ->with('categories', $categories)
+            ->with('tables', $tables);
+    }
+
+    public function addOrder(Request $request) {
+        $item = Item::findOrFail($request->item_id);
+        // dd($item);
+        $table = Table::findOrFail($request->table_id);
+
+        $cartItem = Cart::add($item->id, $item->name, 1, $item->price);
+        $cartItem->associate('Item');
+
+        return redirect()->route('admin.cart');
+    }
+
+    public function retrieve() {
+        // $item = Item::findOrFail($request->id);
+        // $cartItem = Cart::add($item->id, $item->name, 1, $item->price);
+        // // $cartItem->associate('Item');
+        dd(Cart::content());
+    }
+
+
 }

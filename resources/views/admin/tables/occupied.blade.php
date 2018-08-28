@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-6">
                 <p class="display-4">
-                    Listing All Tables..
+                    Listing Occupied Tables..
                 </p>
             </div>
             <div class="col-md-6 new-item">
