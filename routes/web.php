@@ -25,7 +25,11 @@ Route::get('/employee/orders/id/delete', 'EmployeeController@deleteOrder')->name
 
 Route::get('/employee/orders/new', 'EmployeeController@newOrder')->name('employee.newOrder');
 
-Route::get('/employee/tables', 'EmployeeController@showTables')->name('employee.showTables');
+Route::get('/employee/tables', 'EmployeeController@showTables')->name('employee.tables.show');
+Route::get('/employee/categories', 'EmployeeController@showCategories')->name('employee.showCategories');
+Route::get('/employee/items', 'EmployeeController@showItems')->name('employee.items.show');
+
+
 
 
 //admin routes
