@@ -1,6 +1,6 @@
-@extends('admin.layouts.adminLayout')
+@extends('employee.layouts.employeeLayout')
 
-@section('title', 'Admin Profile')
+@section('title', 'Employee Profile')
 
 @section('home')
     <link rel="stylesheet" href="{{asset('css/admin.css')}}">

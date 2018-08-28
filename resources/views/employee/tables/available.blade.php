@@ -1,6 +1,6 @@
 @extends('employee/layouts/employeeLayout')
 
-@section('title', 'Employee Categories')
+@section('title', 'Available Tables')
 
 @section('main_content')
 
@@ -8,13 +8,12 @@
         <div class="row">
             <div class="col-md-6">
                 <p class="display-4">
-                    Listing All Tables..
+                    Listing Available Tables..
                 </p>
             </div>
-            {{-- <div class="col-md-6 new-item">
-                <a href="{{route('admin.showAvailableTables')}}" type="button" class="btn btn-lg btn-success" style="float:right; margin-left:1rem;"><i class="fas fa-check"></i> Show Available Tables</a>
-                <a href="{{route('admin.showOccupiedTables')}}" type="button" class="btn btn-lg btn-danger" style="float:right;"><i class="fas fa-exclamation-triangle"></i> Show Occupied Tables</a>
-            </div> --}}
+            <div class="col-md-6 new-item">
+                <a href="{{route('employee.occupiedTables')}}" type="button" class="btn btn-lg btn-danger" style="float:right;"><i class="fas fa-exclamation-triangle"></i> Show Occupied Tables</a>
+            </div>
         </div>
         <hr>
         <div class="row">
@@ -41,9 +40,7 @@
                                       <button type="submit" class="btn btn-light">
                                           Toggle Status
                                       </button>
-                                      {{-- <a href="{{route('admin.removeTable', ['id' => $table->id])}}" type="submit" class="btn btn-danger">
-                                          Remove Table
-                                      </a> --}}
+                        
                                   </form>
                               </td>
                             </tr>

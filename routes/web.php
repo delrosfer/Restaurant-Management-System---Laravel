@@ -26,6 +26,15 @@ Route::get('/employee/orders/id/delete', 'EmployeeController@deleteOrder')->name
 Route::get('/employee/orders/new', 'EmployeeController@newOrder')->name('employee.newOrder');
 
 Route::get('/employee/tables', 'EmployeeController@showTables')->name('employee.tables.show');
+Route::post('/employee/tables', 'EmployeeController@toggleTable');
+
+Route::get('/employee/tables/available', 'EmployeeController@showAvailableTables')->name('employee.availableTables');
+Route::get('/employee/tables/occupied', 'EmployeeController@showOccupiedTables')->name('employee.occupiedTables');
+Route::post('/employee/tables/occupied', 'EmployeeController@toggleTable');
+Route::post('/employee/tables/available', 'EmployeeController@toggleTable');
+
+
+
 Route::get('/employee/categories', 'EmployeeController@showCategories')->name('employee.showCategories');
 Route::get('/employee/items', 'EmployeeController@showItems')->name('employee.items.show');
 

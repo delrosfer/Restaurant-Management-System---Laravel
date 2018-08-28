@@ -1,14 +1,22 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\Http\Requests\ItemRequest;
+use App\Http\Requests\EditItemRequest;
+use App\Http\Requests\EditCategoryRequest;
+use App\Http\Requests\EditEmployeeRequest;
+use App\Http\Requests\EditProfileRequest;
 use App\Http\Requests\CategoryRequest;
-
-use App\Table;
+use App\Http\Requests\EmployeeRequest;
+use App\Http\Requests\PasswordRequest;
+use App\Http\Requests\TableRequest;
 use App\Item;
 use App\Category;
 use App\Employee;
+use App\Table;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 
 
@@ -59,4 +67,32 @@ class EmployeeController extends Controller
         return view('employee.profile.show')
             ->with('employee', $employee);
     }
+     //occupied tables
+     public function showOccupiedTables() {
+        $tables = Table::where('status', 'Occupied')->get();
+
+        return view('employee.tables.occupied')
+            ->with('tables', $tables);
+    }
+    public function showAvailableTables() {
+        $tables = Table::where('status', 'Available')->get();
+
+        return view('employee.tables.available')
+            ->with('tables', $tables);
+    }
+    public function toggleTable(Request $request) {
+        $table = Table::findOrFail($request->table_id);
+
+        if($table->status == 'Available'){
+            $table->status = 'Occupied';
+        }
+        else {
+            $table->status = 'Available';
+        }
+
+        $table->save();
+
+        return redirect()->route('employee.tables.show');
+    }
+
 }

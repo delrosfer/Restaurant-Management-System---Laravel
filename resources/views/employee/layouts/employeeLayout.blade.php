@@ -40,8 +40,8 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tables</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">View Available Tables</a>
-                  <a class="dropdown-item" href="#">View Occupied Tables</a>
+                  <a class="dropdown-item" href="{{route('employee.availableTables')}}">View Available Tables</a>
+                  <a class="dropdown-item" href="{{route('employee.occupiedTables')}}">View Occupied Tables</a>
                   <a class="dropdown-item" href="{{route('employee.tables.show')}}">View All Tables</a>
                 </div>
             </li>
